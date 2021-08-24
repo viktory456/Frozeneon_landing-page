@@ -1,0 +1,503 @@
+$mainBg: rgba(22, 21, 31, 1);
+$shopBg: rgba(36, 35, 51, 1);
+$cardsBg: rgba(16, 15, 22, 1);
+$green: rgba(33, 204, 20, 1);
+$pink: rgba(245, 44, 191, 1);
+$orange: rgba(255,124,70,1);
+$mainFont: Leksa Sans, sans-serif;
+$secondFont: 'Roboto', sans-serif;
+$mainFontColor: rgba(255, 255, 255, 1);
+$secondFontColor: rgba(185, 183, 234, 1);
+$fontTitleSize: 30px;
+$shopMenuSize: 20px;
+$fontSize_s: 10px;
+$fontSize_m: 14px;
+$fontSize_l: 18px;
+$lineHeight_s: 12px;
+$lineHeight_l: 22px;
+$borderRadius: 5px;
+$border: 1px;
+
+
+%flex-style {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: $mainBg;
+}
+/* header */
+.header{
+    background: {
+        image: url(../img/bg1.png);
+        size: 100% auto;
+    }
+    @extend %flex-style;
+    z-index: 10;
+    color: $mainFontColor;
+    font-family: $mainFont;
+    text-transform: uppercase;
+    font-size: $fontSize_l;
+    font-style: bold;
+    font-weight: 700;
+    line-height: $lineHeight_l;
+    padding: 15px;
+}
+.header-menu {
+    @extend %flex-style;
+    border: $border*2 solid transparent;
+    border-radius: $borderRadius*2;
+    &--goback {
+        padding: 1px 22px;
+        margin-left: 40px;
+        position: relative;
+        &::before {
+            z-index: -1;
+            content:"";
+            position:absolute;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            border-radius: $borderRadius*6; 
+            padding: $border*2; 
+            background:linear-gradient(to right, rgba(151, 148, 198, 0.3), rgba(151, 148, 198, 0));
+            -webkit-mask: 
+               linear-gradient($mainFontColor 0 0) content-box, 
+               linear-gradient($mainFontColor 0 0);
+            -webkit-mask-composite: destination-out; 
+            mask-composite: exclude;
+        }
+        &:hover{
+            &::before{
+                background-color: rgba(151, 148, 198, 0.7);
+            }
+        }
+    }
+    &--gohome {
+        padding: 5px 25px;
+        margin-right: 40px;
+        position: relative;
+        &::before {
+            z-index: -1;
+            content:"";
+            position:absolute;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            border-radius: $borderRadius*6; 
+            padding: $border*2;
+            background:linear-gradient(to left, rgba(151, 148, 198, 0.3), rgba(151, 148, 198, 0));
+            -webkit-mask: 
+               linear-gradient($mainFontColor 0 0) content-box, 
+               linear-gradient($mainFontColor 0 0);
+            -webkit-mask-composite: destination-out; 
+            mask-composite: exclude;
+          }
+        &:hover{
+            &::before{
+                background-color: rgba(151, 148, 198, 0.7);
+            }
+        }
+    }
+    &__link{
+        text-decoration: none;
+        color: $mainFontColor;
+    }
+}
+.stash{
+    & a{
+        display: block;
+        text-decoration: none;
+    }
+    @extend %flex-style;
+    &__coins{
+        @extend %flex-style;
+        background-color: $cardsBg;
+        border-radius: $borderRadius*5;
+        padding: 5px 62px;
+        position: relative;
+        margin-right: 47px; 
+        & p{
+            font-family: $mainFont;
+            font-size: $fontSize_l;
+            font-style: bold;
+            font-weight: 700;
+            line-height: $lineHeight_l;
+            color: $mainFontColor;
+        }
+        p:last-of-type{
+            color: $secondFontColor;
+            font-family: $secondFont;
+            font-style: normal;
+            font-weight: 500;
+            font-size: $fontSize_s;
+            line-height: $lineHeight_s;
+            text-transform: initial;
+        }
+        &::before {
+            content: url('../img/coins.png');
+            display: block;
+            position: absolute;
+            height: 69px;
+            width: 69px;
+            left: -20px;
+            top: -15px;
+        }
+        &:hover{
+            background-color: lighten($cardsBg, 10%);
+        }
+    }
+    &__crystals{
+        @extend %flex-style;
+        background-color: $cardsBg;
+        border-radius: $borderRadius*5;
+        padding: 5px 72px;
+        position: relative;
+        & p{
+            font-family: $mainFont;
+            font-size: $fontSize_l;
+            font-style: bold;
+            font-weight: 700;
+            line-height: $lineHeight_l;
+            color: $mainFontColor;
+        }
+        p:last-of-type{
+            color: $secondFontColor;
+            font-family: $secondFont;
+            font-style: normal;
+            font-weight: 500;
+            font-size: $fontSize_s;
+            line-height: $lineHeight_s;
+            text-transform: initial;
+        }
+        &::before {
+            content: url('../img/crystals.png');
+            display: block;
+            position: absolute;
+            height: 82px;
+            width: 82px;
+            left: -25px;
+            top: -20px;
+        }
+        &:hover{
+            background-color: lighten($cardsBg, 10%);
+        }
+    }
+    &__add--coins{
+        position: relative;
+        left: 70px;
+        top: -28px;
+        & .add1{
+            position: absolute;
+            z-index: 10;
+        }
+        & .add2{
+            z-index: 20;
+            position: absolute;
+            top: -2px;
+        }
+        & .add3{
+            position: absolute; 
+            z-index: 30;
+            top: 4px;
+            left: 4px;
+        }
+    }
+    &__add--crystals{
+        position: relative;
+        left: 65px;
+        top: -28px;
+        & .add1{
+            position: absolute;
+            z-index: 10;
+        }
+        & .add2{
+            z-index: 20;
+            position: absolute;
+            top: -2px;
+        }
+        & .add3{
+            position: absolute; 
+            z-index: 30;
+            top: 4px;
+            left: 4px;
+        }
+    }
+}
+// main
+main {
+    background-image: url(../img/background.png);
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+}
+.container{
+    width: 72%;
+    margin: 0 auto;
+    box-shadow: 0px $borderRadius*4 $borderRadius*6 rgba(0, 0, 0, 0.5);
+    border-radius: 0px 0px $borderRadius*2 $borderRadius*2;
+}
+.shop {
+    font-family: $mainFont;
+    font-style: bold;
+    text-align: center;
+    color: $mainFontColor;
+    text-transform:capitalize;
+
+    &__items-list{
+        display: none;
+        background: $shopBg;
+        padding-bottom: 30px;
+    }
+    &__items__title{
+        &--crystals{
+            padding-top: 24px;
+            padding-bottom: 20px;
+        }
+        &--coins{
+            padding-top: 30px;
+            padding-bottom: 20px;
+        }
+    }
+    &__menu{
+        padding-top: 10px;
+    }
+    &__menu-title{
+        background-color: $shopBg;
+        color: rgba(92, 90, 124, 1);
+        display: inline-block;
+        width: 19%;
+        height: 5%;
+        font-size: $shopMenuSize;
+        font-weight: 700;
+        line-height: 54px;
+        margin-right: .9%;
+        border-radius: $borderRadius*2 $borderRadius*2 0 0;
+        word-wrap:break-word;
+        &:last-of-type {
+            margin-right: 0px;
+        }
+    }
+}
+.active {
+    color: $mainFontColor;
+    position: relative;
+    &:before {
+        position:absolute;
+        bottom:0;
+        left:0;
+        width:100%;
+        border-bottom: 3px solid rgba(245, 44, 191, 0.4);
+        border-image: linear-gradient(to right, rgba(245,44, 191,0.4) 0%,   rgba(255,124,70,0.4) 100%);
+        border-image-slice: 1;
+        content:"";
+    }
+    &:after {
+        position:absolute;
+        bottom:0;
+        left: 20px;
+        width:78%;
+        border-bottom: $border*3 solid $pink;
+        border-image: linear-gradient(to right, $pink 0%, $orange 100%);
+        border-image-slice: 1;
+        content:"";
+    }
+}
+.crystals{
+    display: grid;
+    grid-template-columns: repeat(4, 212px);
+    grid-template-rows: 294px 294px 294px;
+    column-gap: 22px;
+    row-gap: 22px;
+    justify-content: center;
+    padding-bottom: 30px;
+}
+.coins{
+    display: grid;
+    grid-template-columns: repeat(4, 212px);
+    grid-template-rows: 294px 294px;
+    column-gap: 22px;
+    row-gap: 22px;
+    justify-content: center;
+    position: relative;
+}
+.crystal-card, .coin-card{
+    border-radius: $borderRadius*3;
+    background: rgba(8, 1, 21, 1);
+    position: relative;
+    &::after{
+        content:""
+    }
+    &__bg{
+        position: absolute;
+        z-index: 80;
+        left:-2px;
+        top: -2px;
+    }
+    &__frame{
+        position: absolute;
+        z-index: 90;
+        left:-2px;
+        top: -2px;
+    }
+    &__shadow{
+        position: absolute;
+        z-index: 100;
+        left:-2px;
+        top: -2px;
+    }
+    &__ribbon1{
+        position: absolute;
+        z-index: 110;
+        left: -2px;
+        top: -3px;
+    }
+    &__ribbon2{
+        position: absolute;
+        z-index: 120;
+        left: 3px;
+    }
+    &__coin-pic{
+        position: absolute;
+        z-index: 130;
+        left: 5px;
+        top: 25px;
+    }
+    &__ribbon-text{
+        position: absolute;
+        z-index: 130;
+        left: 20px;
+        top: 12px;
+        transform: rotate(-45deg);
+        text-transform: lowercase;
+    }
+    &__pic{
+        position: absolute;
+        z-index: 130;
+        left: 48px;
+        top: 20px;
+        &:hover{
+            transform: scale(1.1);
+        }
+    }
+    &__pic1{
+        position: absolute;
+        z-index: 130;
+        left: 33px;
+        top: 38px;
+        &:hover{
+            transform: scale(1.1);
+        }
+    }
+    &__text{
+        position: absolute;
+        z-index: 130;
+        left: 56px;
+        top: 145px;
+        font-family: $secondFont;
+        text-align: center;
+        & p {
+            font-size: $fontTitleSize;
+            font-style: bold;
+            font-weight: 700;
+            line-height: 48px;
+            text-transform: lowercase;
+        }
+        & p:last-of-type {
+            font-size: $fontSize_m;
+            font-style: normal;
+            font-weight: 400;
+            line-height: $lineHeight_l;
+            text-transform: none;
+        }
+    }
+    &__btn{
+        position: absolute;
+        z-index: 130;
+        padding: 11px 35px;
+        left: 30px;
+        top: 240px;
+        border-radius: $borderRadius*6; 
+        background: linear-gradient(to right, $shopBg 0%,#3B3A52 100%);
+        &::before {
+            z-index: -1;
+            content:"";
+            position:absolute;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            border-radius: $borderRadius*6; 
+            padding: $border*2;
+            background:linear-gradient(to right, rgba(104, 47, 189, 1), $pink);
+            -webkit-mask: 
+               linear-gradient($mainFontColor 0 0) content-box, 
+               linear-gradient($mainFontColor 0 0);
+            -webkit-mask-composite: destination-out; 
+            mask-composite: exclude; 
+          }
+        & a{
+            text-decoration: none;
+            color: $mainFontColor;
+            display: block;
+        }
+        & p{
+            font-family: $secondFont;
+            font-size: $fontSize_m;
+            font-style: normal;
+            font-weight: 700;
+            text-align: center;
+        }
+        & span{
+            color: $green;
+        }
+        & .buy-btn{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        &:hover{
+            background: linear-gradient(to right, $shopBg 0%, $pink 50%, rgba(59, 58, 82, 1) 100%);
+        }
+    }
+}
+.divide{
+    height: 1px;
+    border-width: 0px;
+    background-color: rgba(92, 90, 124, 1);
+}
+.coin-card{
+    &__buy{
+        position: absolute;
+        left: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 8px 28px;
+        & p:first-of-type{
+            padding-right: 20px;
+        }
+        & img{
+            padding-right: 5px;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
